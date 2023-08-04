@@ -1,108 +1,100 @@
-Fyyur
------
+# Fyyur - Venue Booking Site
+
+![Python](https://img.shields.io/badge/python-3.9-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Database Setup](#database-setup)
+- [Run the Application](#run-the-application)
+- [License](#license)
 
 ## Introduction
 
-Fyyur is a musical venue and artist booking site that facilitates the discovery and bookings of shows between local performing artists and venues. This site lets you list new artists and venues, discover them, and list shows with artists as a venue owner.
+Fyyur is a web application designed to help musicians and venue owners collaborate and book events. It's built using Flask, a popular Python web framework, and SQLAlchemy, a powerful SQL toolkit for Python. Fyyur allows artists to list their shows and receive booking requests from venue owners. Venue owners can browse through artist profiles and send booking offers.
 
-Your job is to build out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
+## Features
 
-## Overview
+- Artist and venue profiles with detailed information
+- Browse upcoming shows and artists
+- Venue owners can send booking offers to artists
+- Manage and track booking requests
+- Responsive and mobile-friendly design
 
-This app is nearly complete. It is only missing one thing… real data! While the views and controllers are defined in this application, it is missing models and model interactions to be able to store retrieve, and update data from a database. By the end of this project, you should have a fully functioning site that is at least capable of doing the following, if not more, using a PostgreSQL database:
+## Requirements
 
-* creating new venues, artists, and creating new shows.
-* searching for venues and artists.
-* learning more about a specific artist or venue.
+- Python 3.9 or higher
+- Flask (flask) web framework
+- SQLAlchemy (sqlalchemy) SQL toolkit
+- Flask-Migrate (flask-migrate) for database migrations
+- WTForms (wtforms) library for form handling
+- Flask-WTF (flask-wtf) for form validation
+- PostgreSQL database (or any other supported by SQLAlchemy)
 
-We want Fyyur to be the next new platform that artists and musical venues can use to find each other, and discover new music shows. Let's make that happen!
+Install the required dependencies using the following command:
 
-## Tech Stack (Dependencies)
-
-### 1. Backend Dependencies
-Our tech stack will include the following:
- * **virtualenv** as a tool to create isolated Python environments
- * **SQLAlchemy ORM** to be our ORM library of choice
- * **PostgreSQL** as our database of choice
- * **Python3** and **Flask** as our server language and server framework
- * **Flask-Migrate** for creating and running schema migrations
-You can download and install the dependencies mentioned above using `pip` as:
-```
-pip install virtualenv
-pip install SQLAlchemy
-pip install postgres
-pip install Flask
-pip install Flask-Migrate
-```
- 
-
-### 2. Frontend Dependencies
-You must have the **HTML**, **CSS**, and **Javascript** with [Bootstrap 3](https://getbootstrap.com/docs/3.4/customize/) for our website's frontend. Bootstrap can only be installed by Node Package Manager (NPM). Therefore, if not already, download and install the [Node.js](https://nodejs.org/en/download/). Windows users must run the executable as an Administrator, and restart the computer after installation. After successfully installing the Node, verify the installation as shown below.
-```
-node -v
-npm -v
-```
-Install [Bootstrap 3](https://getbootstrap.com/docs/3.3/getting-started/) for the website's frontend:
-```
-npm init -y
-npm install bootstrap@3
-```
-
-
-## Main Files: Project Structure
-
-  ```sh
-  ├── README.md
-  ├── app.py *** the main driver of the app. Includes your SQLAlchemy models.
-                    "python app.py" to run after installing dependences
-  ├── config.py *** Database URLs, CSRF generation, etc
-  ├── error.log
-  ├── forms.py *** Your forms
-  ├── requirements.txt *** The dependencies we need to install with "pip3 install -r requirements.txt"
-  ├── static
-  │   ├── css 
-  │   ├── font
-  │   ├── ico
-  │   ├── img
-  │   └── js
-  └── templates
-      ├── errors
-      ├── forms
-      ├── layouts
-      └── pages
-  ```
-
-Overall:
-* Models are located in the `MODELS` section of `app.py`.
-* Controllers are also located in `app.py`.
-* The web frontend is located in `templates/`, which builds static assets deployed to the web server at `static/`.
-* Web forms for creating data are located in `form.py`
-
-
-
-## Development Setup
-1. **Initialize and activate a virtualenv using:**
-```
-python -m virtualenv env
-source env/bin/activate
-```
->**Note** - In Windows, the `env` does not have a `bin` directory. Therefore, you'd use the analogous command shown below:
-```
-source env/Scripts/activate
-```
-
-2. **Install the dependencies:**
-```
+```bash
 pip install -r requirements.txt
 ```
 
-3. **Run the development server:**
-```
-export FLASK_APP=myapp
-export FLASK_ENV=development # enables debug mode
-python3 app.py
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/M-Rb3/fyyur.git
+cd fyyur
 ```
 
-4. **Verify on the Browser**<br>
-Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000) 
+2. Set up a virtual environment (optional but recommended):
 
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```
+
+3. Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+### Database Setup
+
+1. Create a PostgreSQL database for Fyyur. Make sure you have PostgreSQL installed.
+2. Set the database URI in config.py to connect to your PostgreSQL database:
+
+```python
+SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/database_name'
+```
+
+Replace `username`, `password`, and `database_name` with your PostgreSQL credentials and database name.
+
+3. Apply database migrations to create the necessary tables:
+
+```bash
+flask db upgrade
+```
+
+### Run the Application
+
+1. Start the Flask development server:
+
+```bash
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run
+```
+
+2. Open your web browser and visit http://localhost:5000 to access the Fyyur application.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
